@@ -1,12 +1,14 @@
 export interface Config {
-  nest: NestConfig;
-  cors: CorsConfig;
-  swagger: SwaggerConfig;
-  graphql: GraphqlConfig;
-  security: SecurityConfig;
+  nest?: NestConfig;
+  cors?: CorsConfig;
+  database?: Database;
+  swagger?: SwaggerConfig;
+  graphql?: GraphqlConfig;
+  security?: SecurityConfig;
 }
 
 export interface NestConfig {
+  url: string;
   port: number;
 }
 
@@ -33,4 +35,9 @@ export interface SecurityConfig {
   expiresIn: string;
   refreshIn: string;
   bcryptSaltOrRound: string | number;
+}
+
+export interface Database {
+  host: string;
+  port: number;
 }

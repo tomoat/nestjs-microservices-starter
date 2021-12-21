@@ -1,8 +1,9 @@
 import { Config } from './config.interface';
 
-const config: Config = {
+export default (): Config => ({
   nest: {
-    port: 3000,
+    url: process.env.URL || 'localhost',
+    port: parseInt(process.env.PORT, 10) || 5001,
   },
   cors: {
     enabled: true,
@@ -13,6 +14,10 @@ const config: Config = {
     description: 'The nestjs API description',
     version: '1.5',
     path: 'api',
+  },
+  database: {
+    host: process.env.DATABASE_HOST,
+    port: parseInt(process.env.DATABASE_PORT, 10) || 5432,
   },
   graphql: {
     playgroundEnabled: true,
@@ -25,6 +30,4 @@ const config: Config = {
     refreshIn: '7d',
     bcryptSaltOrRound: 10,
   },
-};
-
-export default (): Config => config;
+});
