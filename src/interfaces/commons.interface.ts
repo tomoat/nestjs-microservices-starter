@@ -14,3 +14,19 @@ export interface Product {
   description: string;
   type: string;
 }
+
+export interface Query {
+  attributes?: Array<string>;
+  where?: string;
+  order?: string;
+  offset?: number;
+  limit?: number;
+}
+
+export interface RequestBody {
+  //
+}
+
+export interface Count {
+  count: number;
+}

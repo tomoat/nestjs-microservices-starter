@@ -22,5 +22,9 @@ message UsersList {
 
 service UsersService {
   rpc findAll (commons.Query) returns (UsersList) {}
+  rpc findOne (commons.Id) returns (User) {}
+  rpc createUser (commons.User) returns (User) {}
+  rpc deleteUser (commons.Id) returns (User) {}
+  rpc UpdateUser (commons.User) returns (User) {}
   rpc count (commons.Query) returns (commons.Count) {}
 }
