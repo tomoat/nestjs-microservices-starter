@@ -28,4 +28,20 @@ export class AppController {
       email: data.email,
     };
   }
+
+  @GrpcMethod('InvoiceService', 'createInvoice')
+  createInvoice(
+    data: undefined,
+    metadata: Metadata,
+    call: ServerDuplexStream<any, any>,
+  ) {
+    const serverMetadata = new Metadata();
+
+    serverMetadata.add('Set-Cookie', 'yummy_cookie=choco');
+    call.sendMetadata(serverMetadata);
+
+    return {
+      status: 'invoice created',
+    };
+  }
 }
